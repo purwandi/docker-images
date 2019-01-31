@@ -14,7 +14,6 @@ RUN apk update && apk add --no-cache bash bash gzip curl unzip coreutils tzdata 
     NPROC=$(grep -c ^processor /proc/cpuinfo 2>/dev/null || 1) && \
     docker-php-ext-install -j${NPROC} gd &&\
     curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
-    composer install --no-dev && \
     rm -f /var/cache/apk/*
 
 RUN php -v
