@@ -2,6 +2,7 @@ FROM php:7.2-fpm-alpine
 
 # WORKDIR
 ADD ./supervisord.conf /etc/supervisor/supervisord.conf
+ADD php.ini /usr/local/etc/php/
 
 RUN apk update && apk add --no-cache bash bash gzip curl unzip coreutils tzdata libjpeg-turbo-dev libpng-dev freetype-dev supervisor && \
     cp /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && echo "Asia/Jakarta" > /etc/timezone && apk del tzdata && \
