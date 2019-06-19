@@ -18,6 +18,8 @@ RUN apt-get update -y && apt-get -y --no-install-recommends install \
   g++ \
   make \
   git \
+  zip \
+  unzip \
   xvfb && \
   curl -sS https://getcomposer.org/installer | php && mv composer.phar /usr/local/bin/composer && \
   curl -sL https://deb.nodesource.com/setup_12.x | bash - &&\
