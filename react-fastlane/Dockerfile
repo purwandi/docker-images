@@ -14,7 +14,7 @@ RUN apt-get update -y && \
 RUN locale-gen C.UTF-8 || true
 ENV LANG=C.UTF-8
 
-ARG sdk_version=sdk-tools-linux-3859397.zip
+ARG sdk_version=sdk-tools-linux-4333796.zip
 ARG android_home=/opt/android/sdk
 
 RUN sudo mkdir -p ${android_home} && \
