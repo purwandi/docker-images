@@ -2,7 +2,7 @@ FROM openjdk:8-jdk-slim
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update -y && \
+RUN mkdir -p /usr/share/man/man1 && apt-get update -y && \
   apt-get install --no-install-recommends  -y \
   autoconf automake make git xvfb apt locales sudo openssh-client ca-certificates tar gzip expect gcc g++ python-dev python3-dev maven locales unzip zip bzip2 gnupg curl wget \
   build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev bison && \
