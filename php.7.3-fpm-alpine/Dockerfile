@@ -4,8 +4,9 @@ FROM php:7.3-fpm-alpine
 ADD ./supervisord.conf /etc/supervisor/supervisord.conf
 ADD php.ini /usr/local/etc/php/
 
-RUN apk update && apk add --no-cache bash bash gzip curl unzip coreutils tzdata libjpeg-turbo-dev libpng-dev freetype-dev supervisor && \
+RUN apk update && apk add --no-cache bash bash gzip curl unzip coreutils tzdata libjpeg-turbo-dev libpng-dev freetype-dev supervisor libzip-dev && \
     cp /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && echo "Asia/Jakarta" > /etc/timezone && apk del tzdata && \
+    docker-php-ext-configure zip --with-libzip && \
     docker-php-ext-install pdo pdo_mysql sockets zip pcntl && \
     docker-php-ext-configure gd \
         --with-gd \
