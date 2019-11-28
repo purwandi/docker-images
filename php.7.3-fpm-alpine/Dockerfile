@@ -6,7 +6,7 @@ ADD php.ini /usr/local/etc/php/
 
 RUN apk update && apk add --no-cache bash bash gzip curl unzip coreutils tzdata libjpeg-turbo-dev libpng-dev freetype-dev supervisor && \
     cp /usr/share/zoneinfo/Asia/Jakarta /etc/localtime && echo "Asia/Jakarta" > /etc/timezone && apk del tzdata && \
-    docker-php-ext-install pdo pdo_mysql sockets && \
+    docker-php-ext-install pdo pdo_mysql sockets zip pcntl && \
     docker-php-ext-configure gd \
         --with-gd \
         --with-freetype-dir=/usr/include/ \
