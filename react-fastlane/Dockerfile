@@ -12,9 +12,6 @@ RUN mkdir -p /usr/share/man/man1 && apt-get update -y && \
 
 # Use unicode
 RUN locale-gen C.UTF-8 || true
-RUN sysctl fs.inotify.max_user_instances=524288 && \
-   sysctl fs.inotify.max_user_watches=524288 && \
-   sysctl fs.inotify.max_queued_events=524288
 ENV LANG=C.UTF-8
 
 ARG sdk_version=sdk-tools-linux-4333796.zip
