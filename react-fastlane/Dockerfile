@@ -3,7 +3,7 @@ FROM openjdk:8-jdk-slim
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN mkdir -p /usr/share/man/man1 && apt-get update -y && \
-  apt-get install --no-install-recommends  -y \
+  apt-get install --no-install-recommends procps  -y \
   autoconf automake make git xvfb apt locales sudo openssh-client ca-certificates tar gzip expect gcc g++ python-dev python3-dev maven locales unzip zip bzip2 gnupg curl wget \
   build-essential zlib1g-dev libyaml-dev libssl-dev libgdbm-dev libreadline-dev libncurses5-dev libffi-dev bison && \
 	rm -rf /var/lib/apt/lists/* && \
@@ -12,6 +12,9 @@ RUN mkdir -p /usr/share/man/man1 && apt-get update -y && \
 
 # Use unicode
 RUN locale-gen C.UTF-8 || true
+RUN sysctl fs.inotify.max_user_instances=524288 && \
+   sysctl fs.inotify.max_user_watches=524288 && \
+   sysctl fs.inotify.max_queued_events=524288
 ENV LANG=C.UTF-8
 
 ARG sdk_version=sdk-tools-linux-4333796.zip
